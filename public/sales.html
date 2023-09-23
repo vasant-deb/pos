@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>DigiPOS</title>
+      <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+      <link rel="stylesheet" href="/src/css/app.css">
+      <link rel="manifest" href="/manifest.json">
+      <script src="/src/js/kit.js"></script>
+      <link rel="apple-touch-icon" sizes="180x180" href="/src/images/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/src/images/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/src/images/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/src/images/favicon/site.webmanifest">
+      <link rel="stylesheet" href="/src/css/bootstrap.min.css">
+      <script src="/src/js/jquery.js"></script>
+      <script src="/src/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="/src/css/toast.css">
+      <link rel="stylesheet" href="/src/css/sales.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700">
+
+   </head>
+   <body>
+    <!--
+    <div class='loader'>
+      <div class="bg"></div>
+      <div class='circle'></div>
+      <div class='circle'></div>
+      <div class='circle'></div>
+      <div class='circle'></div>
+      <div class='circle'></div>
+    </div>
+    -->
+    <div class="app-container">
+
+   
+
+
+        <div class="app-content">
+          <div class="app-sidebar">
+            <a href="/" class="app-sidebar-link active">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" /></svg>
+            </a>
+            
+          
+            <a id="opencalculator" class="app-sidebar-link">
+              <i class="fa fa-calculator link-icon" aria-hidden="true"></i>
+           </a>
+            <a id="fullscreen-button"  class="app-sidebar-link">
+              <i class="fa fa-maximize link-icon" aria-hidden="true"></i>
+            </a>
+          
+          </div>
+          <div class="projects-section">
+
+            <!--NEw header-->
+            <div class="header-left">
+          <!--  <p class="app-name">DIGIPOS</p>-->
+            <div class="search-wrapper">
+              <input class="search-input" id="searchkeyword" type="text" placeholder="Scan / Search Product By Code Name">
+              <svg onclick="search()"  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-search" viewBox="0 0 24 24">
+                <defs></defs>
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="M21 21l-4.35-4.35"></path>
+              </svg>
+            </div>
+
+          
+             
+                  <div class="searchresults row" id="searchResultsContainer">
+                      <!-- Dynamic items here -->
+              
+                
+                </div>
+         
+                <div id="paginationx" class="text-center mt-4">
+                  <ul class="pagination justify-content-center">
+                      <!-- Pagination links will be added here -->
+                  </ul>
+              </div>
+              <a id="back-button"  class="app-sidebar-link">
+                <i class="fa fa-arrow-left link-icon" aria-hidden="true"></i> Back to Home
+              </a>
+            </div>
+            <!--end header-->
+           
+
+       
+        
+
+            <div class="header-title hidesearch">
+              <div class="headerp">
+                <p>Categories</p>
+              </div>
+                <div class="categoryarrow controls-slide">
+                <div class="swiper-button-prev prevxc"> > </div>
+                <div class="swiper-button-next nextxc"> > </div>
+                </div>
+            </div>
+            <div class="projects-section-header hidesearch">
+                <!--TEst-->
+                <div class="swiper-container categories">
+                    <div class="swiper-wrapper" id="carousel-container">
+                        <!-- Carousel items will be dynamically added here -->
+                    </div>
+                    <!-- Navigation buttons (optional) -->
+                </div>
+                  <!--end -->
+            </div>
+
+            <!--mY MODELS-->
+
+            <div class="header-title mynd hidesearch">
+              <div class="headerp">
+                <p>Models</p>
+              </div>
+                <div class="modelarrow controls-slide">
+                <div class="swiper-button-prev prevxm"> > </div>
+                <div class="swiper-button-next nextxm"> > </div>
+                </div>
+            </div>
+            <div class="projects-section-header hidesearch">
+                <!--TEst-->
+                <div class="swiper-container xmodels">
+                    <div class="swiper-wrapper" id="carousel-models">
+                        <!-- Carousel items for "models" section will be dynamically added here -->
+                    </div>
+                </div>
+                  <!--end -->
+            </div>
+            <!--END MODELS-->
+
+
+             <!--mY Products-->
+
+             <div class="header-title hidesearch allproducts">
+              <div class="headerp">
+                <p>All Products</p>
+              </div>
+               
+            </div>
+            <div class="projects-section-header hidesearch allproducts">
+              <div class="container xproducts">
+                  <div class="row" id="carousel-productsx">
+                      <!-- Dynamic items here -->
+                  </div>
+                  <div id="pagination" class="text-center mt-4">
+                      <ul class="pagination justify-content-center">
+                          <!-- Pagination links will be added here -->
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          
+            <!--END Products-->
+            
+          
+      </div>
+      <div class="messages-section">
+
+        <!--new header-->
+        <div class="header-right">
+       
+          <button class="profile-btn" id="mydatetime">
+            <i class="fa fa-calendar mr5" aria-hidden="true"></i> <span id="date"> </span> <i class="fa fa-clock mr5" aria-hidden="true"></i> <span id="time"> </span>
+          </button>
+          <button class="profile-btn">
+            <i class="fa fa-user mr5" aria-hidden="true"></i> <b>VASANT SHARMA</b>
+        </button>
+         
+          </div>
+        <!--end header-->
+        <button class="messages-close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="15" y1="9" x2="9" y2="15" />
+            <line x1="9" y1="9" x2="15" y2="15" /></svg>
+        </button>
+        <div class="projects-section-header add-user textbox">
+            <button id="openuseradd" class="btn imageadduser"> <i class="fa fa-user-plus"></i></button>  
+            <select class="form-control" id="customerSelect">
+                <option>Select Customer</option>
+             </select>
+        </div>
+
+        
+        <table style="width: 100%" class="table-striped" id="invoice-table">
+          <thead>
+            <tr>
+              <th style="width: 50px; padding-left: 0;">Sno.</th>
+              <th style="width: 150px; padding-left: 0;">Item Name</th>
+             
+              <th  style="width: 150px; padding-left: 0;">QTY</th>
+              <th class="text-center">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+
+            
+            
+         
+          </tbody>
+         
+          
+         
+        </table>
+    
+      
+
+
+         <div class="footer_panel">
+          <div class="form-group">
+                   
+            <span class="col-md-3  text-center">
+              
+              <input type="hidden"  class="form-control" id="oldsubtotal">
+              <td class="text-center" id="">Subtotal<input type="number" disabled class="form-control" id="putsubtotal" value="0.00"></td>
+          </span>
+          <span class="col-md-3  text-center" id="inhst">
+            
+           
+            <td class="text-center" id="">HST<input type="number" disabled class="form-control" id="puthst" value="0.00"></td>
+          </span>
+          <span class="col-md-3  text-center" id="inhst">
+            
+           
+            <td class="text-center" id="">Discount<input type="number" class="form-control" id="putdiscount" value="0.00"></td>
+          </span>
+          <span class="col-md-3  text-center" id="buttonupdate">
+            
+           
+            <td class="text-center" id=""><button class="btn btn-primary" id="updatefinal"><i class="fa fa-refresh" aria-hidden="true"></i> Update</button></td>
+          </span>
+      
+          </div> 
+            <div class="row">
+               <div class="col-md-12">
+             
+                  <div class="grandtotal">
+                     <span>Total Payable : <span id="totalpayable">$ 0.00</span></span>
+                  </div>
+
+               
+               </div>
+              
+           
+             
+               <div class="col-sm-12 col-md-4">
+                  <button type="button" id="reset" class="btn btn-danger ripple btn-rounded btn-block mt-1"><i class="i-Power-2"></i>
+                  Reset
+                  </button>
+               </div>
+             <!-- <div class="col-sm-12 col-md-3">
+                  <button type="button" onclick="pay('Card')" class="btn btn-black ripple btn-rounded btn-block mt-1"><i class="i-Power-2"></i>
+                  Card
+                  </button>
+               </div>
+               <div class="col-sm-12 col-md-3">
+                <button type="button" onclick="pay('Cash')" class="btn btn-black ripple btn-rounded btn-block mt-1">
+                  <i class="i-Power-2"></i> Cash
+                </button>
+               </div>
+               <div class="col-sm-12 col-md-3">
+                  <button type="button" onclick="pay('Gift Card')" class="btn btn-black ripple btn-rounded btn-block mt-1"><i class="i-Power-2"></i>
+                  Gift Card
+                  </button>
+               </div>
+               <div class="col-sm-12 col-md-4">
+                <button type="button" class="btn btn-primary ripple btn-rounded btn-block mt-1"><i class="i-Power-2"></i>
+                Points Redeem
+                </button>
+             </div>
+               --> 
+             <div class="col-sm-12 col-md-4">
+                <button type="button" id="general" class="btn btn-black ripple btn-rounded btn-block mt-1"><i class="i-Power-2"></i>
+                General
+                </button>
+             </div>
+             <div class="col-sm-12 col-md-4">
+                <button type="button" id="manual" class="btn btn-primary ripple btn-rounded btn-block mt-1"><i class="i-Power-2"></i>
+                Manual
+                </button>
+             </div>
+             
+            </div>
+         </div>
+       
+        <!--
+        <div class="messages">
+          <div class="message-box">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile image">
+            <div class="message-content">
+              <div class="message-header">
+                <div class="name">CAMERA TEMPERED LENS IPHONE 14 PRO MAX</div>
+                <div class="star-checkbox">
+                  <input type="checkbox" id="star-1">
+                  <label for="star-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                  </label>
+                </div>
+              </div>
+              <p class="message-line">
+               Apple
+              </p>
+              <p class="message-line time">
+                Dec, 12
+              </p>
+            </div>
+          </div>
+          <div class="message-box">
+            <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile image">
+            <div class="message-content">
+              <div class="message-header">
+                <div class="name">Mark</div>
+                <div class="star-checkbox">
+                  <input type="checkbox" id="star-2">
+                  <label for="star-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                  </label>
+                </div>
+              </div>
+              <p class="message-line">
+                Hey, can tell me about progress of project? I'm waiting for your response.
+              </p>
+              <p class="message-line time">
+                Dec, 12
+              </p>
+            </div>
+          </div>
+          <div class="message-box">
+            <img src="https://images.unsplash.com/photo-1543965170-4c01a586684e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDZ8fG1hbnxlbnwwfDB8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="profile image">
+            <div class="message-content">
+              <div class="message-header">
+                <div class="name">David</div>
+                <div class="star-checkbox">
+                  <input type="checkbox" id="star-3">
+                  <label for="star-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                  </label>
+                </div>
+              </div>
+              <p class="message-line">
+                Awesome! 🤩 I like it. We can schedule a meeting for the next one.
+              </p>
+              <p class="message-line time">
+                Dec, 12
+              </p>
+            </div>
+          </div>
+          <div class="message-box">
+            <img src="https://images.unsplash.com/photo-1533993192821-2cce3a8267d1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fHdvbWFuJTIwbW9kZXJufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="profile image">
+            <div class="message-content">
+              <div class="message-header">
+                <div class="name">Jessica</div>
+                <div class="star-checkbox">
+                  <input type="checkbox" id="star-4">
+                  <label for="star-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                  </label>
+                </div>
+              </div>
+              <p class="message-line">
+                I am really impressed! Can't wait to see the final result.
+              </p>
+              <p class="message-line time">
+                Dec, 11
+              </p>
+            </div>
+          </div>
+        </div>
+    -->
+
+      </div>
+      </div>
+
+      </div>
+
+      <div class="popup" id="generalform" role="alert">
+        <div class="popup-container">
+          <a href="#0" class="popup-close img-replace">Close</a>
+          <form method="post" id="generalpost">
+           
+            <label class="text-left">New Total Price</label>
+          <div class="form-group">
+            <input class="form-control" name="finalprice" id="finalprice" type="number"/>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          </form>
+        </div> 
+      </div> 
+
+      <div class="popup" id="userform" role="alert">
+        <div class="popup-container">
+          <a href="#0" id="userclose" class="popup-close img-replace">Close</a>
+          <form method="post" id="userpost">
+           
+            <label class="text-left">Customer Name</label>
+          <div class="form-group">
+            <input class="form-control" name="cname" id="cname" type="text"/>
+          </div>
+          <label class="text-left">Phone</label>
+          <div class="form-group">
+            <input class="form-control" name="cphone" id="cphone" type="tel"/>
+          </div>
+          <label class="text-left">Email</label>
+          <div class="form-group">
+            <input class="form-control" name="cemail" id="cemail" type="email"/>
+          </div>
+          <label class="text-left">DOB</label>
+          <div class="form-group">
+            <input class="form-control" name="cdate" id="cdate" type="date"/>
+          </div>
+          <label class="text-left">Street</label>
+          <div class="form-group">
+            <input class="form-control" name="cstreet" id="cstreet" type="text"/>
+          </div>
+          <label class="text-left">City</label>
+          <div class="form-group">
+            <input class="form-control" name="ccity" id="ccity" type="text"/>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          </form>
+        </div> 
+      </div> 
+
+      <div class="popup" id="manualform" role="alert">
+        <div class="popup-container">
+          <a href="#0" id="manualclose" class="popup-close img-replace">Close</a>
+          <form method="post" id="manualpost">
+           
+            <label class="text-left">Amount</label>
+          <div class="form-group">
+            <input class="form-control" step=".01" name="amount" id="amount" type="number"/>
+          </div>
+          <label class="text-left">Mode of Payment</label>
+          <div class="form-group">
+            <select class="form-control" name="modeofpayment" id="modeofpayment">
+              <option>Credit/Debit Card</option>
+              <option>Cash</option>
+              <option>Gift Card</option>
+              <option>Points Redeem</option>
+            </select>
+          </div>
+          <label class="text-left">Amount Left : $ <span id="amountleft">0.00</span></label>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          </form>
+        </div> 
+      </div> 
+     
+
+      <audio id="clickSound">
+        <source src="/src/music/click.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="successSound">
+      <source src="/src/music/success.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+  <audio id="errorSound">
+    <source src="/src/music/error.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      <script src="/src/js/toast.js"></script>
+      <script src="/src/js/sales.js"></script>
+      <script src="/src/js/time.js"></script>
+   </body>
+</html>
